@@ -14,15 +14,15 @@ int main() {
 		scanf("%i", &k);
 		switch (k) {
 		case 0:
-			mydata = alldataload();
-			alldataview(mydata); break;
+			mydata = alldataload(); //load data to array
+			alldataview(mydata); break;	//view data
 		case 1:
-			mydata = alldataload();
-			printf("Total lenght:%i km", searchdata(mydata)); break;
+			mydata = alldataload();	//load data to array
+			printf("Total lenght:%i km", searchdata(mydata)); break; //lenght of rivers
 		case 2:
-			exit(EXIT_SUCCESS);
+			exit(EXIT_SUCCESS);	//for exit from prog
 		default:
-			printf("Unknown command, try another\n"); break;
+			printf("Unknown command, try another\n"); break; //if command undefined
 		}
 	}
 	_getch();
