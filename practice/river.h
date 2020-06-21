@@ -1,3 +1,10 @@
+/**
+ * @file river.h
+ * @author Derzhin K.V., gr.515à
+ * @date 21.06.2020
+ * @brief Practice
+ *
+ */
 #ifndef RIVER_H
 #define RIVER_H
 #define STR_LENGTH 11	//max lenght of river name
@@ -24,7 +31,7 @@ struct rivers* alldataload();
 int searchdata(struct rivers* database);
 
 /**
-  *	Search by condition (total length of rivers with a depth of less than 50 meters)
+  *	Database information output
   *	@param struct rivers* - array with info from database
   *	@return 
   */

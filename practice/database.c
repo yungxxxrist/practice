@@ -1,3 +1,11 @@
+/**
+ * @file database.c
+ * @author Derzhin K.V., gr.515à
+ * @date 21.06.2020
+ * @brief Practice
+ *
+ */
+
 #include<stdio.h>
 #include<conio.h>
 #include<string.h>
