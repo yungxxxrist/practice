@@ -8,29 +8,33 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include "river.h"	//module connection
+#include "river.h"	
 #pragma warning(disable:4996)
 
-extern struct rivers* alldataload() {
-	struct rivers* database = malloc(N * sizeof(struct rivers)); //memory for data from file
-	FILE* fp;
-	int i = 0;
-	fp = fopen("rivers.txt", "r"); //open file
-	while (fscanf(fp, "%s%i%i", database[i].name, &(database[i].lenght), &(database[i].depth)) != EOF) { //load data until the file ends
+struct rivers* memory_allocation() {
+	struct rivers* memoryblock = malloc(1000000000 * sizeof(struct rivers)); //memory for data from file
+	if (!memoryblock) return NULL; //if memory allocation error
+	return memoryblock;
+}
+
+struct rivers* alldataload(FILE* fp, struct rivers* database) {
+	int i = 0, j = 0;
+	while (j != EOF) { //load data until the file ends
+		j = fscanf(fp, "%s%i%i", database[i].name, &(database[i].lenght), &(database[i].depth));
+		if (((j<3)&&(j>EOF))||((strlen(database[i].name)>STR_LENGTH)&&(j!=EOF))) return NULL;//if uncorrect data
 		i++;
 	}
-	fclose(fp); //close file
 	return database;
 }
 
-extern void alldataview(struct rivers* database) {
+void alldataview(struct rivers* database) {
 	printf("DATABASE:\n|River name| lenght  |depth|\n");
 	for (int i = 0; i < N; i++) {
 		printf("|%-10s| %-5ikm | %-2im |\n", database[i].name, database[i].lenght, database[i].depth); //print data from array
 	}
 }
 
-extern int searchdata(struct rivers* database) {
+int searchdata(struct rivers* database) {
 	int sum = 0;
 	for (int i = 0; i < N; i++) {
 		if (database[i].depth < 50) {	//for rivers with a depth of less than 50 meters add each lenght

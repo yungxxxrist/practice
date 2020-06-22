@@ -17,11 +17,18 @@ struct rivers {
 };
 
 /**
+  *	Creates memory block
+  *	@param
+  *	@return struct rivers* memoryblock - block of reserved memory
+  */
+struct rivers* memory_allocation();
+
+/**
   *	Filling out information from file
-  *	@param 
+  *	@param FILE* fp - file with info, struct rivers* database - memory block
   *	@return struct rivers* database - array with info from database
   */
-struct rivers* alldataload();
+struct rivers* alldataload(FILE* fp, struct rivers* database);
 
 /**
   *	Search by condition (total length of rivers with a depth of less than 50 meters)
