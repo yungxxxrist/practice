@@ -12,7 +12,7 @@
 #pragma warning(disable:4996)
 
 struct rivers* memory_allocation() {
-	struct rivers* memoryblock = malloc(1000000000 * sizeof(struct rivers)); //memory for data from file
+	struct rivers* memoryblock = malloc(N * sizeof(struct rivers)); //memory for data from file
 	if (!memoryblock) return NULL; //if memory allocation error
 	return memoryblock;
 }
